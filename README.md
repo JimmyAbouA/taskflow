@@ -11,18 +11,18 @@ and is developed one layer of the stack per week.
 This is a monorepo. Each part of the stack lives in its own folder so the pieces can be
 developed and run independently.
 
-| Folder | Stack | Status |
+| Folder | Stack | Week |
 | --- | --- | --- |
-| `backend/` | Node.js + Express + MongoDB | Week 1 |
-| `web/` | Next.js public front end | Week 2 |
-| `cms/` | React SPA admin CMS | Week 3 |
+| `backend/` | Node.js + Express + MongoDB REST API | Week 1 |
+| `admin/` | React SPA admin CMS | Week 2 |
+| `frontend/` | Next.js public site | Week 3 |
 | `docs/` | Schema diagrams, API notes, Postman collection | ongoing |
 
 ## Tech stack
 
 - **Backend:** Node.js, Express, JWT authentication
 - **Database:** MongoDB with Mongoose
-- **Front end:** Next.js (public site), React SPA (admin CMS)
+- **Front end:** React SPA (admin CMS), Next.js (public site)
 - **Tools:** Git & GitHub, Postman, npm
 
 ## Getting started
@@ -45,7 +45,9 @@ npm run dev
 
 - **Week 1 — Foundations, Database & Backend API:** repo setup, data model for Users /
   Projects / Tasks, REST CRUD endpoints, JWT authentication, Postman collection.
-- **Week 2 — Public front end (Next.js):** landing page and dashboard listing projects
-  and their tasks.
-- **Week 3 — Admin CMS (React):** protected area to manage users, projects, and tasks.
-- **Week 4 — Integration & deployment:** everything wired together and deployed.
+- **Week 2 — Admin CMS (React):** single-page admin panel consuming the Week 1 API —
+  login screen, protected dashboard, and full CRUD for projects and tasks.
+- **Week 3 — Public front end (Next.js):** responsive landing page, a dashboard listing
+  projects and their tasks from the API, and dynamic project-detail pages.
+- **Week 4 — Integration, deployment & final delivery:** all three layers connected,
+  security review, deployed to a live URL, final demo and code walkthrough.
