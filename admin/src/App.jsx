@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 function ApiStatus() {
   const [status, setStatus] = useState(null)
@@ -16,37 +17,61 @@ function ApiStatus() {
 
   return (
     <p>
-      API is {status.status} — database {status.database} — up for{' '}
-      {status.uptimeSeconds}s
+      API is {status.status} — database {status.database}
     </p>
   )
 }
 
-function TaskCard({ title, priority }) {
-  const [done, setDone] = useState(false)
-
+function Dashboard() {
   return (
     <div>
-      <strong>{title}</strong> — priority: {priority} — status: {done ? 'done' : 'todo'}
-      <button onClick={() => setDone(!done)}>
-        {done ? 'Mark as todo' : 'Mark as done'}
-      </button>
+      <h2>Dashboard</h2>
+      <ApiStatus />
+    </div>
+  )
+}
+
+function Projects() {
+  return (
+    <div>
+      <h2>Projects</h2>
+      <p>The projects table will go here on Day 4.</p>
+    </div>
+  )
+}
+
+function Login() {
+  return (
+    <div>
+      <h2>Login</h2>
+      <p>The login form will go here on Day 3.</p>
     </div>
   )
 }
 
 function App() {
   return (
-    <div>
-      <h1>TaskFlow Admin</h1>
-      <h3>Compu-Vision internship — Week 2</h3>
+    <BrowserRouter>
+      <div>
+        <h1>TaskFlow Admin</h1>
 
-      <ApiStatus />
+        <nav>
+          <Link to="/">Dashboard</Link>
+          {' | '}
+          <Link to="/projects">Projects</Link>
+          {' | '}
+          <Link to="/login">Login</Link>
+        </nav>
 
-      <TaskCard title="Design the logo" priority="high" />
-      <TaskCard title="Write the README" priority="low" />
-      <TaskCard title="Deploy the API" priority="medium" />
-    </div>
+        <hr />
+
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
