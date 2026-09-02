@@ -11,7 +11,7 @@ router.post(
   '/register',
   [
     body('name').trim().isLength({ min: 2, max: 60 }).withMessage('Name must be 2-60 characters'),
-    body('email').isEmail().withMessage('A valid email is required').normalizeEmail(),
+    body('email').isEmail().withMessage('A valid email is required').toLowerCase().trim(),
     body('password')
       .isLength({ min: 8 })
       .withMessage('Password must be at least 8 characters'),
@@ -23,7 +23,7 @@ router.post(
 router.post(
   '/login',
   [
-    body('email').isEmail().withMessage('A valid email is required').normalizeEmail(),
+    body('email').isEmail().withMessage('A valid email is required').toLowerCase().trim(),
     body('password').notEmpty().withMessage('Password is required'),
   ],
   validate,

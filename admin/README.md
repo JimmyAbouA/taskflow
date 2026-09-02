@@ -1,16 +1,35 @@
-# React + Vite
+# TaskFlow Admin (Week 2)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React single-page admin CMS. It consumes the Week 1 API: login with JWT, then
+create / read / update / delete projects and tasks.
 
-Currently, two official plugins are available:
+## Run it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The backend must already be running on port 5000.
 
-## React Compiler
+```bash
+cd admin
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Open http://localhost:5173
 
-## Expanding the Oxlint configuration
+## What is here
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Route | Purpose |
+| --- | --- |
+| `/login` | Register or log in; stores the JWT in `localStorage` |
+| `/` | Dashboard: current user + API health |
+| `/projects` | Project CRUD |
+| `/tasks` | Task CRUD, filtered by status and priority |
+
+Protected routes redirect to `/login` when no token is present.
+
+## Week 2 deliverable checklist
+
+- [x] Login screen and protected dashboard
+- [x] List / create / edit / delete projects and tasks via the API
+- [x] JWT attached to every request
+- [x] Form validation plus loading, empty, and error states
+- [x] Code in `/admin`

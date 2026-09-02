@@ -1,11 +1,10 @@
 import { Navigate } from 'react-router-dom'
+import { getToken } from '../api.js'
 
-// Blocks anything it wraps unless a token is stored. Day 3 replaces the
-// placeholder token with a real JWT from POST /api/auth/login.
 function ProtectedRoute({ children }) {
-  const token = localStorage.getItem('token')
+  const token = getToken()
 
-  if (!token) {
+  if (!token || token === 'placeholder-until-day-3') {
     return <Navigate to="/login" replace />
   }
 

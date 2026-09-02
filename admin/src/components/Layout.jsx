@@ -1,17 +1,21 @@
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { clearToken } from '../api.js'
 
 function Layout() {
   const navigate = useNavigate()
 
   function handleLogout() {
-    localStorage.removeItem('token')
+    clearToken()
     navigate('/login')
   }
 
   return (
     <div className="layout">
       <aside className="sidebar">
-        <p className="brand">TaskFlow Admin</p>
+        <p className="brand">
+          <span className="brand-mark">TF</span>
+          TaskFlow
+        </p>
 
         <nav>
           <NavLink to="/" end>
@@ -22,7 +26,9 @@ function Layout() {
         </nav>
 
         <div className="sidebar-footer">
-          <button onClick={handleLogout}>Log out</button>
+          <button type="button" onClick={handleLogout}>
+            Log out
+          </button>
         </div>
       </aside>
 
